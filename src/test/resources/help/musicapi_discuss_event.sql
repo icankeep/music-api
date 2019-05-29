@@ -1,0 +1,2 @@
+INSERT INTO musicapi.discuss_event (user_id, title, content, create_time) VALUES ('431291878', 'I am also a title', 'I am also a test', '2019-05-28 21:56:49');
+INSERT INTO musicapi.discuss_event (user_id, title, content, create_time) VALUES ('431291878', 'I am a title', 'I am a test', '2019-05-28 21:57:00');

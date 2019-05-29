@@ -10,12 +10,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import javax.xml.crypto.Data;
 import java.net.URL;
 import java.util.*;
 
@@ -96,17 +92,17 @@ public class RestController {
 		return null;
 	}
 
-	@RequestMapping(value = "/login", produces = "text/plain;charset=utf-8")
-	public @ResponseBody String loginByEmail(@RequestParam String email, @RequestParam String password) {
-		try {
-			URL url = new URL(ip + "/login?email=" + email + "&password=" + password);
-			String data = IOUtils.toString(url, "utf8");
-			return data;
-		} catch (Exception e){
-			e.printStackTrace();
-		}
-		return null;
-	}
+//	@RequestMapping(value = "/login", produces = "text/plain;charset=utf-8")
+//	public @ResponseBody String loginByEmail(@RequestParam String email, @RequestParam String password) {
+//		try {
+//			URL url = new URL(ip + "/login?email=" + email + "&password=" + password);
+//			String data = IOUtils.toString(url, "utf8");
+//			return data;
+//		} catch (Exception e){
+//			e.printStackTrace();
+//		}
+//		return null;
+//	}
 
 	@RequestMapping(value = "/user/detail", produces = "application/json;charset=utf-8")
 	public @ResponseBody User userDetail(@RequestParam String uid) {
@@ -119,6 +115,8 @@ public class RestController {
 			if (user2 == null) {
 				userDao.insert(user1);
 			} else {
+				user1.setPhone(user2.getPhone());
+				user1.setPassword(user2.getPassword());
 				userDao.update(user1);
 			}
 			sqlSession.commit();
@@ -276,14 +274,14 @@ public class RestController {
 		return null;
 	}
 
-	@RequestMapping(value = "/discuss/event/insert", produces = "application/json;charset=utf-8")
-	public @ResponseBody Page insertEvent(@RequestBody Map<String,String> map) {
+	@RequestMapping(value = "/discuss/event/insert", produces = "application/json;charset=utf-8",method = RequestMethod.POST)
+	public @ResponseBody Page insertEvent(@RequestParam String userId, @RequestParam String title, @RequestParam String content) {
 		try {
 			DiscussEventDao discussEventDao = sqlSession.getMapper(DiscussEventDao.class);
 			DiscussEvent discussEvent = new DiscussEvent();
-			discussEvent.setUserId(map.get("userId"));
-			discussEvent.setTitle(map.get("title"));
-			discussEvent.setContent(map.get("content"));
+			discussEvent.setUserId(userId);
+			discussEvent.setTitle(title);
+			discussEvent.setContent(content);
 			discussEvent.setCreateTime(new Date());
 			int result = discussEventDao.insert(discussEvent);
 			Page page = new Page();
@@ -304,13 +302,13 @@ public class RestController {
 	}
 
 	@RequestMapping(value = "/discuss/comment/insert", produces = "application/json;charset=utf-8")
-	public @ResponseBody Page insertComment(@RequestBody Map<String,String> map) {
+	public @ResponseBody Page insertComment(@RequestParam String userId, @RequestParam String content, @RequestParam Long eventId) {
 		try {
 			DiscussCommentDao discussCommentDao = sqlSession.getMapper(DiscussCommentDao.class);
 			DiscussComment discussComment = new DiscussComment();
-			discussComment.setEventId(Long.valueOf(map.get("eventId")));
-			discussComment.setContent(map.get("content"));
-			discussComment.setUserId(map.get("userId"));
+			discussComment.setEventId(eventId);
+			discussComment.setContent(content);
+			discussComment.setUserId(userId);
 			discussComment.setCreateTime(new Date());
 			int result = discussCommentDao.insert(discussComment);
 			Page page = new Page();
