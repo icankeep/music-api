@@ -22,8 +22,8 @@ public class DiscussEventDaoTest extends BaseDaoTest {
             DiscussEventDao discussEventDao = sqlSession.getMapper(DiscussEventDao.class);
             DiscussEvent discussEvent = new DiscussEvent();
             discussEvent.setUserId("12121112");
-            discussEvent.setContent("I am a test");
-            discussEvent.setTitle("I am a title");
+            discussEvent.setContent("no");
+            discussEvent.setTitle("go");
             discussEvent.setCreateTime(new Date());
 
             int result = discussEventDao.insert(discussEvent);

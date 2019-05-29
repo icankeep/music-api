@@ -214,6 +214,24 @@ public class RestController {
 		return null;
 	}
 
+	@RequestMapping(value = "/discuss/event/new", produces = "application/json;charset=utf-8")
+	public @ResponseBody List<DiscussEvent> discussNewEvent(@RequestParam Integer limit) {
+		try {
+			limit = limit == null ? 20 : limit;
+			DiscussEventDao discussEventDao = sqlSession.getMapper(DiscussEventDao.class);
+			UserDao userDao = sqlSession.getMapper(UserDao.class);
+			List<DiscussEvent> discussEventList = discussEventDao.selectLimitNewEvents(limit);
+			for (DiscussEvent discussEvent : discussEventList) {
+				User user = userDao.selectById(discussEvent.getUserId());
+				discussEvent.setUser(user);
+			}
+			return discussEventList;
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	@RequestMapping(value = "/discuss/event/detail", produces = "application/json;charset=utf-8")
 	public @ResponseBody DiscussEvent discussEventDetail(@RequestParam Long id) {
 		try {

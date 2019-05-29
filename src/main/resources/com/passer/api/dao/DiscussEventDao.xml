@@ -22,6 +22,13 @@
     <include refid="Base_Column_List" />
     from discuss_event
   </select>
+  <select id="selectLimitNewEvents" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from discuss_event
+    order by create_time desc
+    limit #{limit}
+  </select>
   <delete id="deleteById">
     delete from discuss_event
     where id = #{id,jdbcType=BIGINT}

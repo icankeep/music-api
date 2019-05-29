@@ -12,4 +12,6 @@ public interface DiscussEventDao {
     DiscussEvent selectById(Long id);
 
     List<DiscussEvent> selectAll();
+
+    List<DiscussEvent> selectLimitNewEvents(int limit);
 }

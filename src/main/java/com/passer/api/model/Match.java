@@ -8,14 +8,14 @@ import lombok.Data;
  * @Version 1.0
  */
 @Data
-public class Match implements Comparable<Double>{
+public class Match implements Comparable<Match>{
     private String userId;
     private User user;
     private Double weight;
 
     @Override
-    public int compareTo(Double o) {
-        return o.compareTo(weight);
+    public int compareTo(Match match) {
+        return Double.compare(match.weight, weight);
     }
 
     public Match(String userId, Double weight) {
