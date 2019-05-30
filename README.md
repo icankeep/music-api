@@ -99,7 +99,7 @@ type=0为总的记录,type=1为最近一周的记录
 }
 ```
 
-###　添加评论
+### 添加评论
 
 /discuss/comment/insert
 
