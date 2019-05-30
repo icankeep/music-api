@@ -79,6 +79,7 @@ public class RestController {
 
 			RecordData recordData = JSON.parseObject(data, RecordData.class);
 			List<Record> recordList = recordData.getAllData();
+			recordDao.deleteByUserId(uid);
 			for (Record record : recordList) {
 				record.setUserId(uid);
 				recordDao.insert(record);
@@ -169,13 +170,12 @@ public class RestController {
 		return null;
 	}
 
-	@RequestMapping(value = "/user/record", produces = "text/plain;charset=utf-8")
-	public @ResponseBody String userRecord(@RequestParam String uid, @RequestParam String type) {
+	@RequestMapping(value = "/user/record", produces = "application/json;charset=utf-8")
+	public @ResponseBody List<Record> userRecord(@RequestParam String uid, @RequestParam String type) {
 		try {
 			URL url = new URL(ip + "/user/record?uid=" + uid + "&type=" + type);
 			String data = IOUtils.toString(url, "utf8");
 			RecordData recordData = JSON.parseObject(data, RecordData.class);
-			RecordDao recordDao = sqlSession.getMapper(RecordDao.class);
 			List<Record> recordList = null;
 			if ("0".equals(type)) {
 				recordList = recordData.getAllData();
@@ -184,12 +184,9 @@ public class RestController {
 			}
 			for (Record record : recordList) {
 				record.setUserId(uid);
-				recordDao.insert(record);
 			}
-			sqlSession.commit();
-			return data;
+			return recordList;
 		} catch (Exception e){
-			sqlSession.rollback();
 			e.printStackTrace();
 		}
 		return null;
@@ -280,8 +277,8 @@ public class RestController {
 			DiscussEventDao discussEventDao = sqlSession.getMapper(DiscussEventDao.class);
 			DiscussEvent discussEvent = new DiscussEvent();
 			discussEvent.setUserId(userId);
-			discussEvent.setTitle(title);
-			discussEvent.setContent(content);
+			discussEvent.setTitle(new String(title.getBytes("ISO-8859-1"), "UTF-8"));
+			discussEvent.setContent(new String(content.getBytes("ISO-8859-1"), "UTF-8"));
 			discussEvent.setCreateTime(new Date());
 			int result = discussEventDao.insert(discussEvent);
 			Page page = new Page();
@@ -307,7 +304,7 @@ public class RestController {
 			DiscussCommentDao discussCommentDao = sqlSession.getMapper(DiscussCommentDao.class);
 			DiscussComment discussComment = new DiscussComment();
 			discussComment.setEventId(eventId);
-			discussComment.setContent(content);
+			discussComment.setContent(new String(content.getBytes("ISO-8859-1"), "UTF-8"));
 			discussComment.setUserId(userId);
 			discussComment.setCreateTime(new Date());
 			int result = discussCommentDao.insert(discussComment);

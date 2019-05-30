@@ -1,0 +1,77 @@
+调用接口前缀：https://localhost:8443/music-api-2.0
+
+首页所有动态（未做分页，显示所有动态）
+/discuss/all
+返回数据见all.json
+
+指定个数的最新动态,如果直接按照下面url调用,默认条数为20条
+/discuss/event/new?limit=
+返回数据和all.json数据格式一致
+
+单个动态详细信息，包括发布的用户信息，动态包含的所有评论信息
+/discuss/event/detail?id=
+返回数据见detail.json
+
+添加动态
+/discuss/event/insert
+请求方式为post：
+请求参数：userId,title,content
+返回数据：
+{
+  "msg": "添加成功",
+  "code": "200"
+}
+
+/*
+{
+  "msg": "添加失败,发生错误",
+  "code": "400"
+}
+*/
+
+删除动态
+/discuss/event/delete?id=
+返回数据：
+{
+  "msg": "删除成功",
+  "code": "200"
+}
+
+/*
+{
+  "msg": "删除失败,动态不存在或发生错误",
+  "code": "400"
+}
+*/
+
+添加评论
+/discuss/comment/insert
+请求方式为post:
+请求参数为:userId,eventId,content
+返回数据：
+{
+  "msg": "添加成功",
+  "code": "200"
+}
+
+/*
+{
+  "msg": "添加失败,发生错误",
+  "code": "400"
+}
+*/
+
+删除评论
+/discuss/comment/delete?id=
+返回数据：
+{
+  "msg": "删除成功",
+  "code": "200"
+}
+
+/*
+{
+  "msg": "删除失败,评论不存在或发生错误",
+  "code": "400"
+}
+*/

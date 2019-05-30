@@ -19,9 +19,9 @@
             </transactionManager>
             <dataSource type="UNPOOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://127.0.0.1:3306/musicapi?useUnicode=true&amp;characterEncoding=UTF-8"/>
+                <property name="url" value="jdbc:mysql://127.0.0.1:3306/musicapi?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC"/>
                 <property name="username" value="root"/>
-                <property name="password" value="admin"/>
+                <property name="password" value="123456"/>
             </dataSource>
         </environment>
     </environments>

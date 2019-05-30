@@ -1,0 +1,103 @@
+{
+  "allMatchData": [
+    {
+      "userId": "2406093",
+      "user": {
+        "phone": "13992814692",
+        "email": null,
+        "password": "980715yy",
+        "level": "7",
+        "listenSongs": "2669",
+        "profile": {
+          "detailDescription": "",
+          "followed": false,
+          "province": "610000",
+          "defaultAvatar": false,
+          "avatarUrl": "https://p1.music.126.net/ZROdKYr7V9T0ASnMMM2c5Q==/1365593488975345.jpg",
+          "backgroundUrl": "http://p1.music.126.net/5L9yqWa_UnlHtlp7li5PAg==/2002210674180204.jpg",
+          "userId": "2406093",
+          "gender": "0",
+          "nickname": "变墨",
+          "birthday": "-2209017600000",
+          "city": "610100",
+          "signature": "",
+          "description": null,
+          "followeds": "4",
+          "follows": "5",
+          "playlistCount": "4",
+          "eventCount": "0"
+        },
+        "peopleCanSeeMyPlayRecord": true,
+        "createTime": "0",
+        "createDays": "18046"
+      },
+      "weight": 6340.0
+    },
+    {
+      "userId": "53218123",
+      "user": {
+        "phone": null,
+        "email": null,
+        "password": null,
+        "level": "8",
+        "listenSongs": "5296",
+        "profile": {
+          "detailDescription": "",
+          "followed": false,
+          "province": "610000",
+          "defaultAvatar": false,
+          "avatarUrl": "https://p1.music.126.net/wRzmmscJn_9x3zXsIjM84Q==/18554258719799123.jpg",
+          "backgroundUrl": "http://p1.music.126.net/RZsO1qX6ZTXTvs8Ze7WUGA==/109951163647808485.jpg",
+          "userId": "53218123",
+          "gender": "1",
+          "nickname": "2bpencils",
+          "birthday": "888896544005",
+          "city": "610100",
+          "signature": "这是一条咸鱼。",
+          "description": null,
+          "followeds": "14",
+          "follows": "53",
+          "playlistCount": "12",
+          "eventCount": "0"
+        },
+        "peopleCanSeeMyPlayRecord": true,
+        "createTime": "0",
+        "createDays": "18044"
+      },
+      "weight": 0.0
+    },
+    {
+      "userId": "1727551023",
+      "user": {
+        "phone": "15249148859",
+        "email": null,
+        "password": "gf1998",
+        "level": "0",
+        "listenSongs": "9",
+        "profile": {
+          "detailDescription": "",
+          "followed": false,
+          "province": "610000",
+          "defaultAvatar": false,
+          "avatarUrl": "https://p2.music.126.net/pzdkMHbIUf7QDdD_YqqT4w==/109951164107150169.jpg",
+          "backgroundUrl": "http://p1.music.126.net/7jydhp_LfGDi7gt0i2aTHA==/109951164107404252.jpg",
+          "userId": "1727551023",
+          "gender": "2",
+          "nickname": "耿小菲儿",
+          "birthday": "-2209017600000",
+          "city": "610100",
+          "signature": "",
+          "description": null,
+          "followeds": "0",
+          "follows": "2",
+          "playlistCount": "1",
+          "eventCount": "0"
+        },
+        "peopleCanSeeMyPlayRecord": true,
+        "createTime": "1546834606820",
+        "createDays": "143"
+      },
+      "weight": 0.0
+    }
+  ]
+}
